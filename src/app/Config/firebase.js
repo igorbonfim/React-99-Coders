@@ -3,12 +3,12 @@ import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAh9ATGEvl6iIGMtPSpt58G08_e9jXYdLo",
-    authDomain: "crm-feb8e.firebaseapp.com",
-    projectId: "crm-feb8e",
-    storageBucket: "crm-feb8e.appspot.com",
-    messagingSenderId: "160392836731",
-    appId: "1:160392836731:web:ec1e497e09942d016614de"
+    apiKey: process.env.REACT_APP_API_KEY,
+    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+    projectId: process.env.REACT_APP_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_APP_ID
   };
   
 // Initialize Firebase
