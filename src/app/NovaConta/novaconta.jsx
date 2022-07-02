@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import './novaconta.css';
 
 import firebase from '../Config/firebase';
@@ -10,6 +10,7 @@ function NovaConta(){
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
     const [mensagem, setMensagem] = useState('');
+    const [sucesso, setSucesso] = useState('');
 
     function CadastrarUsuario(){
         setMensagem('');
@@ -20,7 +21,7 @@ function NovaConta(){
         }
 
         firebase.auth().createUserWithEmailAndPassword(email, senha).then(resultado => {
-            alert('Usuário criado com sucesso');
+            setSucesso('S');
         }).catch(error => {
             if(error.message === 'Firebase: Password should be at least 6 characters (auth/weak-password).'){
                 setMensagem('A senha deve ter pelo menos 6 caracteres');
@@ -51,7 +52,8 @@ function NovaConta(){
 
             <button onClick={CadastrarUsuario} className="w-100 btn btn-lg btn-primary" type="submit">Criar Conta</button>
 
-            { mensagem.length > 0 ? <div className="alert alert-danger mt-2" role="alert"> {mensagem}</div> : null }
+            { mensagem.length > 0 ? <div className="alert alert-danger mt-2" role="alert">{mensagem}</div> : null }
+            { sucesso === 'S' ? <Navigate to='/app/home' /> : null }
 
             <div className="login-links mt-5">                              
                 <Link to="/app" className="mx-3">Já tenho uma conta</Link>
