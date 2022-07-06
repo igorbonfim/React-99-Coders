@@ -17,7 +17,7 @@ function Testemunho() {
                 controle de CRM ou para controle de visitas, o 99 CRM tem se
                 revelado uma ferramenta muito útil e intuitiva.
               </h2>
-              <img src="Images/cliente.jpg" />
+              <img src="Images/cliente.jpg"  alt="Cliente 1" />
               <em>Jailson - Ceará</em>
             </div>
             <div className="carousel-item" data-bs-interval="5000">
@@ -27,7 +27,7 @@ function Testemunho() {
                 controle de CRM ou para controle de visitas, o 99 CRM tem se
                 revelado uma ferramenta muito útil e intuitiva.
               </h2>
-              <img src="Images/cliente.jpg" />
+              <img src="Images/cliente.jpg" alt="Cliente 2" />
               <em>Paulo - Ceará</em>
             </div>            
           </div>

@@ -36,12 +36,12 @@ function Login(){
 
             <div className="form-floating">
                 <input onChange={alterarEmail} type="email" className="form-control" id="floatingInput" placeholder="E-mail" />
-                <label for="floatingInput">E-mail</label>
+                <label htmlFor="floatingInput">E-mail</label>
             </div>
 
             <div className="form-floating">
                 <input onChange={alterarSenha} type="password" className="form-control" id="floatingPassword" placeholder="Senha" />
-                <label for="floatingPassword">Senha</label>
+                <label htmlFor="floatingPassword">Senha</label>
             </div>            
             <button onClick={LoginUsuario} className="w-100 btn btn-lg btn-primary" type="button">Acessar</button>
 
