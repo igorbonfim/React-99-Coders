@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import {Link} from 'react-router-dom';
 import './home.css';
 import Navbar from '../Components/Navbar/navbar';
 import ListaClientes from '../Components/ListaCliente/listacliente';
@@ -36,12 +37,12 @@ function Home(){
 
             <div className="row">
                 <div className="col-4">
-                    <button className="btn btn-primary" type="button"><i className="fas fa-plus"></i> Cliente</button>
+                    <Link to='/app/novocliente' className="btn btn-primary" type="button"><i className="fas fa-plus"></i> Cliente</Link>
                 </div>
 
                 <div className="col-8">
                     <div className="input-group mb-3">
-                        <input  onChange={(e) => setTexto(e.target.value)} type="text" className="form-control" placeholder="Pesquisar"/>
+                        <input onChange={(e) => setTexto(e.target.value)} type="text" className="form-control" placeholder="Pesquisar"/>
                         <button onClick={(e) => setBusca(texto)} className="btn btn-primary" type="button"><i className="fas fa-search"></i> Pesquisar</button>
                     </div>                    
                 </div>
