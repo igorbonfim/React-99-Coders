@@ -22,9 +22,9 @@ function ListaClientes(props){
             <tbody>
 
                 {
-                    props.arrayClientes.map(cliente => {
+                    props.arrayClientes.map((cliente, index) => {
                         return (
-                            <tr key={cliente.id}>
+                            <tr key={index}>
                                 <th scope="row">{cliente.id}</th>
                                 <td>{cliente.nome}</td>
                                 <td>{cliente.email}</td>
