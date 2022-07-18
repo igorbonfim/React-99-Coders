@@ -7,11 +7,18 @@ import './home.css';
 import firebase from '../Config/firebase';
 import 'firebase/compat/firestore';
 
-function Home(){
+function Home(){    
 
     const [clientes, setClientes] = useState([]);
     const [busca, setBusca] = useState('');
-    const [texto, setTexto] = useState('');      
+    const [texto, setTexto] = useState('');     
+    const [excluido, setExcluido] = useState('');     
+    
+    function deleteUser(id){
+        firebase.firestore().collection('clientes').doc(id).delete().then(() => {
+            setExcluido(id);    
+        })
+    }
 
     useEffect(function(){
         let listaCli = []; 
@@ -30,7 +37,7 @@ function Home(){
 
             setClientes(listaCli);
         })
-    }, [busca]);
+    }, [busca, excluido]);
 
     return <div>
         <Navbar />
@@ -50,7 +57,7 @@ function Home(){
                 </div>
             </div>
 
-            <ListaClientes arrayClientes={clientes} />
+            <ListaClientes arrayClientes={clientes} clickDelete={deleteUser} />
         </div>
     </div>
 }
