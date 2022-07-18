@@ -7,17 +7,27 @@ import './home.css';
 import firebase from '../Config/firebase';
 import 'firebase/compat/firestore';
 
+import SweetAlert from 'react-bootstrap-sweetalert';
+
 function Home(){    
 
     const [clientes, setClientes] = useState([]);
     const [busca, setBusca] = useState('');
     const [texto, setTexto] = useState('');     
     const [excluido, setExcluido] = useState('');     
+    const [confirma, setConfirma] = useState(false);     
+    const [confirmaId, setConfirmaId] = useState('');     
     
     function deleteUser(id){
         firebase.firestore().collection('clientes').doc(id).delete().then(() => {
-            setExcluido(id);    
+            setExcluido(id); 
+            setConfirma(false);   
         })
+    }
+
+    function confirmDeleteUser(id){
+        setConfirmaId(id);
+        setConfirma(true);
     }
 
     useEffect(function(){
@@ -57,7 +67,26 @@ function Home(){
                 </div>
             </div>
 
-            <ListaClientes arrayClientes={clientes} clickDelete={deleteUser} />
+            <ListaClientes arrayClientes={clientes} clickDelete={confirmDeleteUser} />
+
+            {
+            confirma ? <SweetAlert
+                            warning
+                            showCancel
+                            showCloseButton
+                            confirmBtnText="Sim"
+                            confirmBtnBsStyle="danger"
+                            cancelBtnText="Não"
+                            cancelBtnBsStyle="light"
+                            title="Confirma exclusão?"
+                            onConfirm={() => deleteUser(confirmaId)}
+                            onCancel={() => setConfirma(false)}
+                            reverseButtons={true}                
+                            >
+                            O registro será excluído permanentemente.
+                        </SweetAlert> : null 
+            }
+
         </div>
     </div>
 }
