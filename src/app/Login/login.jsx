@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React, { useState, useContext } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import './login.css';
+import { AuthContext } from '../Context/auth';
 
 import firebase from '../Config/firebase';
 import 'firebase/compat/auth';
@@ -10,13 +11,16 @@ function Login(){
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
     const [sucesso, setSucesso] = useState('');
+    const {setLogado} = useContext(AuthContext);
 
     function LoginUsuario(){
         firebase.auth().signInWithEmailAndPassword(email, senha)
             .then(function(firebaseUser){
+                setLogado(true);
                 setSucesso('S');
             })
             .catch(function(error){
+                setLogado(true);
                 setSucesso('N');
             })        
     }
