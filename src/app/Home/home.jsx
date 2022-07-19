@@ -35,7 +35,9 @@ function Home(){
         
         firebase.firestore().collection('clientes').get().then(async function(resultado){
             await resultado.docs.forEach(function(doc){
-                if(doc.data().nome.indexOf(busca) >= 0){
+                if((doc.data().nome.indexOf(busca) >= 0) || 
+                  (doc.data().email.indexOf(busca) >= 0) ||
+                   doc.data().fone.indexOf(busca) >= 0){
                     listaCli.push({
                         id: doc.id,
                         nome: doc.data().nome,
