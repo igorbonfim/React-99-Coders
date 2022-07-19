@@ -1,8 +1,9 @@
-import React, {useState} from "react";
+import React, {useState, useRef} from "react";
 import {Link, Navigate} from 'react-router-dom';
 import Navbar from '../Components/Navbar/navbar';
 import "./novocliente.css";
 import firebase from '../Config/firebase';
+import validator from "validator";
 
 function NovoCliente() {
 
@@ -12,14 +13,18 @@ function NovoCliente() {
   const [mensagem, setMensagem] = useState('');
   const [sucesso, setSucesso] = useState('N');
   const db = firebase.firestore();
+  const inputNome = useRef();
+  const inputEmail = useRef();
 
   function CadastrarCliente(){
 
     if(nome.length === 0){
       setMensagem('Informe o nome');
+      inputNome.current.focus();
     }
-    else if (email.length === 0){
-      setMensagem('Informe o email');
+    else if ((email.length === 0) || (!validator.isEmail(email))){
+      setMensagem('Informe um e-mail válido');
+      inputEmail.current.focus();
     }
     else {
       db.collection('clientes').add({
@@ -34,7 +39,7 @@ function NovoCliente() {
         setSucesso('N');
       })
     }
-  }
+  }  
 
   return (
     <div>
@@ -45,18 +50,18 @@ function NovoCliente() {
           <h1>Novo cliente</h1>
           <form>
             <div className="mb-3">
-              <label htmlFor="exampleInputEmail1" className="form-label">Nome</label>
-              <input onChange={(e) => setNome(e.target.value)} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />            
+              <label className="form-label">Nome</label>
+              <input onChange={(e) => setNome(e.target.value)} ref={inputNome} type="text" className="form-control" id="nome" aria-describedby="emailHelp" />            
             </div> 
 
             <div className="mb-3">
-              <label htmlFor="exampleInputEmail1" className="form-label">E-mail</label>
-              <input onChange={(e) => setEmail(e.target.value)} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />            
+              <label className="form-label">E-mail</label>
+              <input onChange={(e) => setEmail(e.target.value)} ref={inputEmail} type="email" className="form-control" id="email" aria-describedby="emailHelp" />            
             </div>   
 
             <div className="mb-3">
-              <label htmlFor="exampleInputEmail1" className="form-label">Fone</label>
-              <input onChange={(e) => setFone(e.target.value)} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />            
+              <label className="form-label">Fone</label>
+              <input onChange={(e) => setFone(e.target.value)} type="number" className="form-control" id="fone" aria-describedby="emailHelp" />            
             </div>  
             
             <div className="text-center">
