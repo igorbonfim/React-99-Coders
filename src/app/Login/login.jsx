@@ -16,10 +16,12 @@ function Login(){
     function LoginUsuario(){
         firebase.auth().signInWithEmailAndPassword(email, senha)
             .then(function(firebaseUser){
+                localStorage.setItem('logado', 'S');
                 setLogado(true);
                 setSucesso('S');
             })
             .catch(function(error){
+                localStorage.setItem('logado', 'N');
                 setLogado(true);
                 setSucesso('N');
             })        

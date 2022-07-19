@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter, Route, Routes, Navigate} from 'react-router-dom';
+import {BrowserRouter, Route, Routes, Navigate, Outlet} from 'react-router-dom';
 import { AuthContext } from './app/Context/auth';
 
 /* Páginas */
@@ -17,13 +17,8 @@ function App(){
 
     const { logado } = useContext(AuthContext);
 
-    function SecureRoute({...params}){
-        if(!logado) {
-            return <Navigate to="/app" />
-        }
-        else {
-            return <Route {...params} />
-        }
+    function SecureRoute(){
+        return logado ? <Outlet /> : <Navigate to="/app" />
     }
 
     return (
@@ -35,7 +30,7 @@ function App(){
             <Route exact path='/app/resetsenha' element={<ResetSenha/>}/>                       
 
             <Route exact path='/' element={<SecureRoute/>} >
-                <Route exact path='/app/home' element={<Home/>}/>
+                <Route exact path='/app/home' element={<Home/>}/>                
                 <Route exact path='/app/novocliente' element={<NovoCliente/>}/>                
                 <Route exact path='/app/editarcliente/:id' element={<EditarCliente/>}/>
             </Route>
@@ -45,5 +40,3 @@ function App(){
 }
 
 export default App;
-
-//<Route exact path='/app/clientes' element={<ListaClientes/>}/>

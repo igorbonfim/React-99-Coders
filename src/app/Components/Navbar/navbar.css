@@ -3,3 +3,7 @@
 .navbar{
     background-color: #0d6efd;
 }
+
+.navbar .logout{
+    cursor: pointer;
+}

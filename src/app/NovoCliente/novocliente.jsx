@@ -45,17 +45,17 @@ function NovoCliente() {
           <h1>Novo cliente</h1>
           <form>
             <div className="mb-3">
-              <label for="exampleInputEmail1" className="form-label">Nome</label>
+              <label htmlFor="exampleInputEmail1" className="form-label">Nome</label>
               <input onChange={(e) => setNome(e.target.value)} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />            
             </div> 
 
             <div className="mb-3">
-              <label for="exampleInputEmail1" className="form-label">E-mail</label>
+              <label htmlFor="exampleInputEmail1" className="form-label">E-mail</label>
               <input onChange={(e) => setEmail(e.target.value)} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />            
             </div>   
 
             <div className="mb-3">
-              <label for="exampleInputEmail1" className="form-label">Fone</label>
+              <label htmlFor="exampleInputEmail1" className="form-label">Fone</label>
               <input onChange={(e) => setFone(e.target.value)} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />            
             </div>  
             
