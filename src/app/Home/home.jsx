@@ -54,7 +54,7 @@ function Home(){
     return <div>
         <Navbar />
         <div className="container-fluid titulo">
-            <h1>Cadastro de clientes</h1>
+            <h1><i className="fa-solid fa-people-group icone-clientes"></i> Cadastro de clientes</h1>
 
             <div className="row">
                 <div className="col-4">
