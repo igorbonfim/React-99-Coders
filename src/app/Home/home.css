@@ -2,6 +2,14 @@
     margin-top: 80px;
 }
 
-.icone-clientes, h1{
+.icone-clientes{
     color: #0d6efd;
+}
+
+.titulo-cadastro{
+    color: #0d6efd; 
+}
+
+.btn-cli{
+    margin-right: 15px;
 }

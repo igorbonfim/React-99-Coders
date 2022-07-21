@@ -9,6 +9,8 @@ import 'firebase/compat/firestore';
 
 import SweetAlert from 'react-bootstrap-sweetalert';
 
+import clientesPDF from '../Reports/Clientes/clientes';
+
 function Home(){    
 
     const [clientes, setClientes] = useState([]);
@@ -54,11 +56,12 @@ function Home(){
     return <div>
         <Navbar />
         <div className="container-fluid titulo">
-            <h1><i className="fa-solid fa-people-group icone-clientes"></i> Cadastro de clientes</h1>
+            <h1 className="titulo-cadastro"><i className="fa-solid fa-people-group icone-clientes"></i> Cadastro de clientes</h1>
 
             <div className="row">
                 <div className="col-4">
-                    <Link to='/app/novocliente' className="btn btn-primary" type="button"><i className="fas fa-plus"></i> Cliente</Link>
+                    <Link to='/app/novocliente' className="btn btn-primary btn-cli" type="button"><i className="fas fa-plus"></i> Cliente</Link>
+                    <button onClick={(e) => clientesPDF(clientes)} className="btn btn-danger btn-cli" type="button"><i className="fa-solid fa-file-pdf"></i> Gerar PDF</button>
                 </div>
 
                 <div className="col-8">
