@@ -4,6 +4,7 @@ import Navbar from '../Components/Navbar/navbar';
 import "./novocliente.css";
 import firebase from '../Config/firebase';
 import validator from "validator";
+import { IMaskInput } from "react-imask";
 
 function NovoCliente() {
 
@@ -51,17 +52,17 @@ function NovoCliente() {
           <form>
             <div className="mb-3">
               <label className="form-label">Nome</label>
-              <input onChange={(e) => setNome(e.target.value)} ref={inputNome} type="text" className="form-control" id="nome" aria-describedby="emailHelp" />            
+              <input onChange={(e) => setNome(e.target.value)} ref={inputNome} type="text" className="form-control" id="nome" placeholder="Digite o nome do cliente"/>            
             </div> 
 
             <div className="mb-3">
               <label className="form-label">E-mail</label>
-              <input onChange={(e) => setEmail(e.target.value)} ref={inputEmail} type="email" className="form-control" id="email" aria-describedby="emailHelp" />            
+              <input onChange={(e) => setEmail(e.target.value)} ref={inputEmail} type="email" className="form-control" id="email" placeholder="email@email.com" />            
             </div>   
 
             <div className="mb-3">
               <label className="form-label">Fone</label>
-              <input onChange={(e) => setFone(e.target.value)} type="number" className="form-control" id="fone" aria-describedby="emailHelp" />            
+              <IMaskInput mask="(00) 0000-0000" onChange={(e) => setFone(e.target.value)} className="form-control" id="fone" placeholder="(00) 0000-0000" />            
             </div>  
             
             <div className="text-center">

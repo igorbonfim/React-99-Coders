@@ -56,8 +56,10 @@ function Login(){
            
             <div className="login-links mt-5">
                 <Link to="/app/resetsenha" className="mx-3">Esqueci minha senha</Link>                
-                <Link to="/app/novaconta" className="mx-3">Criar uma Conta</Link>
+                <Link to="/app/novaconta" className="mx-3">Criar uma Conta</Link>                
             </div> 
+
+            <Link to="/" className="mx-3">Retornar a página inicial</Link>
             
             <p className="mt-5 mb-3 text-muted">&copy; Desenvolvido por Igor Bonfim</p>
         </form>

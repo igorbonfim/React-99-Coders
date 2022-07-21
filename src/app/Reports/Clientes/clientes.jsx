@@ -1,9 +1,8 @@
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 
-function clientesPDF(clientes) {
-    const date = new Date();
-    pdfMake.vfs = pdfFonts.pdfMake.vfs;
+function clientesPDF(clientes) {    
+    pdfMake.vfs = pdfFonts.pdfMake.vfs;   
 
     const reportTitle = [
         {
@@ -11,7 +10,7 @@ function clientesPDF(clientes) {
             fontSize: 15,
             bold: true,
             margin: [15, 20, 0, 45] // left, top, right, bottom
-        },        
+        }         
     ];
 
     const dados = clientes.map(cliente => {
